@@ -1,0 +1,53 @@
+﻿@model SF.Mod35.TeamNetwork.App.Views.Register.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+
+<h2>Регистрация нового пользователя</h2>
+<form method="post" asp-controller="Register" asp-action="RegisterEnd">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="FirstName"></label><br />
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div>
+        <label asp-for="LastName"></label><br />
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div>
+        <label asp-for="Login"></label><br />
+        <input asp-for="Login" />
+        <span asp-validation-for="Login"></span>
+    </div>
+    <div>
+        <label asp-for="EmailReg"></label><br />
+        <input asp-for="EmailReg" />
+        <span asp-validation-for="EmailReg"></span>
+    </div>
+    <div>
+        <label asp-for="DateOfBirth"></label><br />
+        <input asp-for="DateOfBirth" />
+        <span asp-validation-for="DateOfBirth"></span>
+    </div>
+    <div>
+        <label asp-for="PasswordReg"></label><br />
+        <input asp-for="PasswordReg" />
+        <span asp-validation-for="PasswordReg"></span>
+    </div>
+    <div>
+        <label asp-for="PasswordConfirm"></label><br />
+        <input asp-for="PasswordConfirm" />
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <div>
+        <button class="btn-primary" type="submit">
+            Create Account
+        </button>
+    </div>
+</form>
