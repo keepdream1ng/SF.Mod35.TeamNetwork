@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SF.Mod35.TeamNetwork.App.DataAccess;
@@ -59,5 +60,15 @@ public static class Program
 			})
 			.AddEntityFrameworkStores<ApplicationDbContext>();
 		services.AddControllersWithViews();
+		services.AddSingleton(GetConfiguredMapper());
+	}
+
+	private static IMapper GetConfiguredMapper()
+	{
+		var mapperConfig = new MapperConfiguration(v =>
+		{
+			v.AddProfile(new MappingProfile());
+		});
+		return mapperConfig.CreateMapper();
 	}
 }
