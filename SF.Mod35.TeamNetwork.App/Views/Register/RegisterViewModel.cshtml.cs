@@ -19,6 +19,7 @@ public class RegisterViewModel
 	public string EmailReg { get; set; }
 
 	[Required]
+	[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]	
 	[Display(Name = "Date of birth")]
 	public DateOnly DateOfBirth { get; set; }
 

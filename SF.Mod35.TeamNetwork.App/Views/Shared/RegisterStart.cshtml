@@ -2,22 +2,19 @@
 @{
 }
 
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
-
 <div class="card col g-1" style="padding: 0">
 	<h2 class="card-header">New User Registration</h2>
-	<form class="card-body" method="get" asp-controller="Register" asp-action="RegisterEnd">
+	<form id="registerStartForm" class="card-body" method="get" asp-controller="Register" asp-action="RegisterEnd">
 		<div asp-validation-summary="ModelOnly"></div>
 		<div class="row">
-			<label class="form-label" asp-for="FirstName"></label><br />
+			<label class="form-label" asp-for="FirstName">First name</label><br />
 			<input class="form-control-lg" asp-for="FirstName" />
-			<span asp-validation-for="FirstName"></span>
+			<span class="alert-danger small" role="alert" asp-validation-for="FirstName"></span>
 		</div>
 		<div class="row">
-			<label class="form-label" asp-for="LastName"></label><br />
+			<label class="form-label" asp-for="LastName">Last name</label><br />
 			<input class="form-control-lg" asp-for="LastName" />
-			<span asp-validation-for="LastName"></span>
+			<span class="alert-danger small" role="alert" asp-validation-for="LastName"></span>
 		</div>
 		<div class="row">
 			<button class="btn-primary" type="submit" value="">
