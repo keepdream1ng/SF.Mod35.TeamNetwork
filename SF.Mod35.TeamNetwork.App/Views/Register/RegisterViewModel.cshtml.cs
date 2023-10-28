@@ -19,9 +19,10 @@ public class RegisterViewModel
 	public string EmailReg { get; set; }
 
 	[Required]
-	[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]	
+	[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 	[Display(Name = "Date of birth")]
-	public DateOnly DateOfBirth { get; set; }
+	public DateOnly DateOfBirth { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+	// Thanks to setting initial value it passes current and not 01/01/0001 date in the browser input.
 
 	[Required]
 	[DataType(DataType.Password)]
