@@ -1,0 +1,12 @@
+﻿﻿@using Microsoft.AspNetCore.Identity;
+@using SF.Mod35.TeamNetwork.ClassLibrary.Models;
+@inject SignInManager<User> SignInManager
+
+<div class="col-2">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <form method="post" asp-controller="AccountManager" asp-action="Logout">
+            <input class="btn btn-primary" type="submit" value="Выход" />
+        </form>
+    }
+</div>

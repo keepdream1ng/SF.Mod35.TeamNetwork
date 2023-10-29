@@ -10,15 +10,17 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">TeamNetwork</a>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                    </ul>
+                <div class="row" style="width: 100%">
+					<a class="col-2 navbar-brand" asp-controller="Home" asp-action="Index">TeamNetwork</a>
+					<form class="col input-group">
+                        <div class="input-group-text">
+                            Search:
+                        </div>
+						<input class="form-control" type="text" />
+					</form>
+					<partial name="LogoutButton"/>
                 </div>
             </div>
         </nav>
@@ -31,7 +33,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - SF.Mod35.TeamNetwork.App - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2023 - SF.Mod35.TeamNetwork.App
         </div>
     </footer>
 
