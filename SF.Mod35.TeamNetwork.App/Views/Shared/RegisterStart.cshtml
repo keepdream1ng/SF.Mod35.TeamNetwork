@@ -3,7 +3,7 @@
 }
 
 <div class="card col g-1" style="padding: 0">
-	<h2 class="card-header">New User Registration</h2>
+	<h2 class="card-header">New at our site?</h2>
 	<form id="registerStartForm" class="card-body" method="get" asp-controller="Register" asp-action="RegisterEnd">
 		<div asp-validation-summary="ModelOnly"></div>
 		<div class="row">
@@ -16,7 +16,7 @@
 			<input class="form-control-lg" asp-for="LastName" />
 			<span class="alert-danger small" role="alert" asp-validation-for="LastName"></span>
 		</div>
-		<div class="row">
+		<div class="row mt-3">
 			<button class="btn-primary" type="submit" value="">
 				Sign me up!
 			</button>

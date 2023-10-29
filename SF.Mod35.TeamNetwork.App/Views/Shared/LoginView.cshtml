@@ -1,0 +1,25 @@
+﻿@model SF.Mod35.TeamNetwork.App.Views.Shared.LoginViewModel
+@{
+}
+
+<div class="card col g-1" style="padding: 0">
+	<h2 class="card-header">Welcome!</h2>
+	<form id="registerStartForm" class="card-body" method="get" asp-controller="AccountManager" asp-action="Login">
+		<div asp-validation-summary="ModelOnly"></div>
+		<div class="row">
+			<label class="form-label" asp-for="Email">Email</label><br />
+			<input class="form-control-lg" asp-for="Email" />
+			<span class="alert-danger small" role="alert" asp-validation-for="Email"></span>
+		</div>
+		<div class="row">
+			<label class="form-label" asp-for="Password">Password</label><br />
+			<input class="form-control-lg" asp-for="Password" />
+			<span class="alert-danger small" role="alert" asp-validation-for="Password"></span>
+		</div>
+		<div class="row mt-3">
+			<button class="btn-primary" type="submit" value="">
+				Login
+			</button>
+		</div>
+	</form>
+</div>
