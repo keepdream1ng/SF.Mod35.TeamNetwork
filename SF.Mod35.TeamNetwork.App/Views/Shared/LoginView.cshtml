@@ -4,16 +4,16 @@
 
 <div class="card col g-1" style="padding: 0">
 	<h2 class="card-header">Welcome!</h2>
-	<form id="registerStartForm" class="card-body" method="get" asp-controller="AccountManager" asp-action="Login">
+	<form id="registerStartForm" class="card-body" method="post" asp-controller="AccountManager" asp-action="Login">
 		<div asp-validation-summary="ModelOnly"></div>
 		<div class="row">
 			<label class="form-label" asp-for="Email">Email</label><br />
-			<input class="form-control-lg" asp-for="Email" />
+			<input class="form-control" asp-for="Email" />
 			<span class="alert-danger small" role="alert" asp-validation-for="Email"></span>
 		</div>
 		<div class="row">
-			<label class="form-label" asp-for="Password">Password</label><br />
-			<input class="form-control-lg" asp-for="Password" />
+			<label class="form-label" asp-for="Password"></label><br />
+			<input class="form-control" asp-for="Password" />
 			<span class="alert-danger small" role="alert" asp-validation-for="Password"></span>
 		</div>
 		<div class="row mt-3">

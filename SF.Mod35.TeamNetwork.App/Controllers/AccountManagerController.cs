@@ -33,25 +33,17 @@ public class AccountManagerController : Controller
 	{
 		if (ModelState.IsValid)
 		{
-			var user = _mapper.Map<User>(model);
-			var result = await _signInManager.PasswordSignInAsync(user.Email, model.Password, model.RememberMe, false);
+			var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 			if (result.Succeeded)
 			{
-				if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-				{
-					return Redirect(model.ReturnUrl);
-				}
-				else
-				{
-					return RedirectToAction("Index", "Home");
-				}
+				return RedirectToAction("Profile", "Profile");
 			}
 			else
 			{
 				ModelState.AddModelError("", "Incorrect login/passwod pair!");
 			}
 		}
-		return View("/Home/Index");
+		return RedirectToAction("Index", "Home");
 	}
 
 	[Route("Logout")]

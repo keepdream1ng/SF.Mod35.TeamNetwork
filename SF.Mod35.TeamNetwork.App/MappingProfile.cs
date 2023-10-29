@@ -12,6 +12,6 @@ public class MappingProfile : Profile
             .ForMember(u => u.Email, opt => opt.MapFrom(vm => vm.EmailReg))
             .ForMember(u => u.ImageUrl, opt => opt.MapFrom(vm => $"https://i.pravatar.cc/200?u={vm.EmailReg}"))
             .ForMember(u => u.DateOfBirth, opt => opt.MapFrom(vm => vm.DateOfBirth.ToDateTime(TimeOnly.MinValue)))
-            .ForMember(u => u.UserName, opt => opt.MapFrom(vm => vm.Login));
+            .ForMember(u => u.UserName, opt => opt.MapFrom(vm => vm.EmailReg));
     }
 }

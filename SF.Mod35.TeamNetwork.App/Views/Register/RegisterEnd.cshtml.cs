@@ -35,8 +35,4 @@ public class RegisterViewModel
 	[DataType(DataType.Password)]
 	[Display(Name = "Password confirm")]
 	public string PasswordConfirm { get; set; }
-
-	[Required]
-	[Display(Name = "Login")]
-	public string Login { get; set; }
 }

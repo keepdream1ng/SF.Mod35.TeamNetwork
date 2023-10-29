@@ -9,38 +9,33 @@
 	<form class="card-text p-3" method="post" asp-controller="Register" asp-action="RegisterEnd">
 		<div asp-validation-summary="ModelOnly"></div>
 		<div class="row">
-			<label asp-for="FirstName"></label><br />
-			<input asp-for="FirstName" />
+			<label class="form-label" asp-for="FirstName"></label><br />
+			<input class="form-control" asp-for="FirstName" />
 			<span  class="alert-danger small" role="alert" asp-validation-for="FirstName"></span>
 		</div>
 		<div class="row">
-			<label asp-for="LastName"></label><br />
-			<input asp-for="LastName" />
+			<label class="form-label" asp-for="LastName"></label><br />
+			<input class="form-control" asp-for="LastName" />
 			<span  class="alert-danger small" role="alert" asp-validation-for="LastName"></span>
 		</div>
 		<div class="row">
-			<label asp-for="Login"></label><br />
-			<input asp-for="Login" />
-			<span  class="alert-danger small" role="alert" asp-validation-for="Login"></span>
-		</div>
-		<div class="row">
-			<label asp-for="EmailReg"></label><br />
-			<input asp-for="EmailReg" />
+			<label class="form-label" asp-for="EmailReg"></label><br />
+			<input class="form-control" asp-for="EmailReg" />
 			<span  class="alert-danger small" role="alert" asp-validation-for="EmailReg"></span>
 		</div>
 		<div class="row">
-			<label asp-for="DateOfBirth"></label><br />
-			<input type="date" asp-for="DateOfBirth" />
+			<label class="form-label" asp-for="DateOfBirth"></label><br />
+			<input class="form-control" type="date" asp-for="DateOfBirth" />
 			<span  class="alert-danger small" role="alert" asp-validation-for="DateOfBirth"></span>
 		</div>
 		<div class="row">
-			<label asp-for="PasswordReg"></label><br />
-			<input asp-for="PasswordReg" />
+			<label class="form-label" asp-for="PasswordReg"></label><br />
+			<input class="form-control" asp-for="PasswordReg" />
 			<span  class="alert-danger small" role="alert" asp-validation-for="PasswordReg"></span>
 		</div>
 		<div class="row">
-			<label asp-for="PasswordConfirm"></label><br />
-			<input asp-for="PasswordConfirm" />
+			<label class="form-label" asp-for="PasswordConfirm"></label><br />
+			<input class="form-control" asp-for="PasswordConfirm" />
 			<span  class="alert-danger small" role="alert" asp-validation-for="PasswordConfirm"></span>
 		</div>
 		<div class="row mt-3">
