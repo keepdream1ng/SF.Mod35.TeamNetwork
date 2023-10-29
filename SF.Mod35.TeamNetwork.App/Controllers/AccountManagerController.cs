@@ -40,10 +40,10 @@ public class AccountManagerController : Controller
 			}
 			else
 			{
-				ModelState.AddModelError("", "Incorrect login/passwod pair!");
+				ModelState.AddModelError(String.Empty, "Incorrect login/passwod pair!");
 			}
 		}
-		return RedirectToAction("Index", "Home");
+		return View("LoginView", model);
 	}
 
 	[Route("Logout")]

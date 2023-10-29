@@ -5,7 +5,7 @@
 <div class="card col g-1" style="padding: 0">
 	<h2 class="card-header">Welcome!</h2>
 	<form id="registerStartForm" class="card-body" method="post" asp-controller="AccountManager" asp-action="Login">
-		<div asp-validation-summary="ModelOnly"></div>
+		<div class="alert-danger" asp-validation-summary="ModelOnly"></div>
 		<div class="row">
 			<label class="form-label" asp-for="Email">Email</label><br />
 			<input class="form-control" asp-for="Email" />

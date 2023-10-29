@@ -7,7 +7,7 @@
 <div class="card col">
 	<h2 class="card-header">Finish registration</h2>
 	<form class="card-text p-3" method="post" asp-controller="Register" asp-action="RegisterEnd">
-		<div asp-validation-summary="ModelOnly"></div>
+		<div class="alert-danger" asp-validation-summary="ModelOnly"></div>
 		<div class="row">
 			<label class="form-label" asp-for="FirstName"></label><br />
 			<input class="form-control" asp-for="FirstName" />

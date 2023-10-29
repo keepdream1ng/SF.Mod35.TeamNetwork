@@ -37,7 +37,7 @@ public class RegisterController : Controller
 	[HttpPost]
 	public async Task<IActionResult> Register(RegisterViewModel model)
 	{
-		if (ModelState.IsValid)
+		if ((ModelState.IsValid))
 		{
 			var user = _mapper.Map<User>(model);
 			var result = await _userManager.CreateAsync(user, model.PasswordReg);
