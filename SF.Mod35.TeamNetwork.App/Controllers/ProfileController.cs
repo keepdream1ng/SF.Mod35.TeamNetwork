@@ -53,10 +53,8 @@ public class ProfileController : Controller
 	{
 		if (ModelState.IsValid)
 		{
-			var user = await _userManager.FindByIdAsync(model.Id);
-
+			var user = await _userManager.GetUserAsync(User);
 			_mapper.Map(model, user);
-
 			var result = await _userManager.UpdateAsync(user);
 			if (result.Succeeded)
 			{

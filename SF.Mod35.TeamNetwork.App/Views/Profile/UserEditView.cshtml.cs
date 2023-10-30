@@ -6,9 +6,6 @@ namespace SF.Mod35.TeamNetwork.App.Views.Profile;
 
 public class UserEditViewModel
 {
-	// Id property is not displayed in the view.
-	public string Id { get; set; }
-
 	[Required]
 	[Display(Name = "FirstName")]
 	public string FirstName { get; set; }
