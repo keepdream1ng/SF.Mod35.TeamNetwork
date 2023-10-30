@@ -1,7 +1,53 @@
 ﻿@model SF.Mod35.TeamNetwork.App.Views.Profile.UserProfileModel
-@{
-}
 
-<div>
-	Dummy user profile view.
+<div class="row">
+	<h2 class="col-12 text-center">
+		@Model.UserData.FullName
+	</h2>
 </div>
+<article class="row g-3">
+	<section class="col-4">
+		<div class="row">
+			<img src="@Model.UserData.ImageUrl" />
+		</div>
+		<div class="row p-3">
+			<button class="btn btn-primary">
+				Edit profile
+			</button>
+		</div>
+	</section>
+	<section class="col">
+		<div class="row">
+			<label class="col-auto text-secondary">
+				Status:
+			</label>
+			<span class="col">
+				@Model.UserData.Status
+			</span>
+		</div>
+		<div class="row">
+			<label class="col-auto text-secondary">
+				Date of birth:
+			</label>
+			<span class="col">
+				@DateOnly.FromDateTime(Model.UserData.DateOfBirth)
+			</span>
+		</div>
+		<div class="row">
+			<label class="col-auto text-secondary">
+				About:
+			</label>
+			<span class="col">
+				@Model.UserData.About
+			</span>
+		</div>
+		<div class="row">
+			<label class="col-auto text-secondary">
+				Email:
+			</label>
+			<span class="col">
+				@Model.UserData.Email
+			</span>
+		</div>
+	</section>
+</article>

@@ -36,7 +36,7 @@ public class AccountManagerController : Controller
 			var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 			if (result.Succeeded)
 			{
-				return RedirectToAction("Profile", "Profile");
+				return RedirectToAction("MyPage", "Profile");
 			}
 			else
 			{
