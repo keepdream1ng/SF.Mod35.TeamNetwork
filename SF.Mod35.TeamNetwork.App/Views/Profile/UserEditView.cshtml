@@ -1,0 +1,51 @@
+﻿@model SF.Mod35.TeamNetwork.App.Views.Profile.UserEditViewModel
+@{
+    ViewData["Title"] = "Edit profile";
+}
+
+<div class="card col">
+	<h2 class="card-header">Update profile info</h2>
+	<form class="card-text p-3" method="post" asp-controller="Profile" asp-action="Edit">
+		<div class="alert-danger" asp-validation-summary="ModelOnly"></div>
+		<div class="row">
+			<label class="form-label" asp-for="FirstName"></label><br />
+			<input class="form-control" asp-for="FirstName" />
+			<span  class="alert-danger small" role="alert" asp-validation-for="FirstName"></span>
+		</div>
+		<div class="row">
+			<label class="form-label" asp-for="LastName"></label><br />
+			<input class="form-control" asp-for="LastName" />
+			<span  class="alert-danger small" role="alert" asp-validation-for="LastName"></span>
+		</div>
+		<div class="row">
+			<label class="form-label" asp-for="Email"></label><br />
+			<input class="form-control" asp-for="Email" />
+			<span  class="alert-danger small" role="alert" asp-validation-for="Email"></span>
+		</div>
+		<div class="row">
+			<label class="form-label" asp-for="DateOfBirth"></label><br />
+			<input class="form-control" type="date" asp-for="DateOfBirth" />
+			<span  class="alert-danger small" role="alert" asp-validation-for="DateOfBirth"></span>
+		</div>
+		<div class="row">
+			<label class="form-label" asp-for="ImageUrl"></label><br />
+			<input class="form-control" asp-for="ImageUrl" />
+			<span  class="alert-danger small" role="alert" asp-validation-for="ImageUrl"></span>
+		</div>
+		<div class="row">
+			<label class="form-label" asp-for="Status"></label><br />
+			<input class="form-control" asp-for="Status" />
+		</div>
+		<div class="row">
+			<label class="form-label" asp-for="About"></label><br />
+			<input class="form-control" asp-for="About" />
+		</div>
+		<div class="row mt-3">
+			<button class="btn btn-primary" type="submit">
+				Update
+			</button>
+		</div>
+	</form>
+</div>
+
+@section Scripts{<partial name="_ValidationScriptsPartial" />}
