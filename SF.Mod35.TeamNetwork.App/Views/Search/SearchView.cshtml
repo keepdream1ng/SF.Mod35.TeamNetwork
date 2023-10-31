@@ -8,8 +8,9 @@
 		@foreach (var user in @Model.UserList)
 		{
 			<section class="card col-2">
-				<img class="card-img-top" src="@user.ImageUrl" alt="User profile pic"/>
-				<label class="card-text">@user.FullName</label>
+				<img class="card-img-top" src="@user.Item1.ImageUrl" alt="User profile pic"/>
+				<label class="card-text">@user.Item1.FullName</label>
+				<label class="card-text">@user.Item2.ToString()</label>
 			</section>
 		}
 	}

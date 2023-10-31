@@ -6,5 +6,5 @@ namespace SF.Mod35.TeamNetwork.App.Views.Search;
 
 public class SearchViewModel
 {
-	public List<User> UserList { get; set; }
+	public List<Tuple<User, ConnectionStatus>> UserList { get; set; }
 }

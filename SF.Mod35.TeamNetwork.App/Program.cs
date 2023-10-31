@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SF.Mod35.TeamNetwork.App.DataAccess;
+using SF.Mod35.TeamNetwork.App.DataAccess.Repository;
+using SF.Mod35.TeamNetwork.App.DataAccess.UoW;
 using SF.Mod35.TeamNetwork.ClassLibrary.Models;
 
 namespace SF.Mod35.TeamNetwork.App;
@@ -50,6 +52,7 @@ public static class Program
 		var services = builder.Services;
 		services.AddRazorPages();
 		services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+		services.AddScoped<IUnitOfWork, UnitOfWork>();
 		services.AddIdentity<User, IdentityRole>(options =>
 			{
 				options.Password.RequiredLength = 5;
