@@ -1,0 +1,20 @@
+﻿@model SF.Mod35.TeamNetwork.App.Views.Search.SearchViewModel
+@{
+}
+
+<article class="row">
+	@if (Model.UserList.Count != 0)
+	{
+		@foreach (var user in @Model.UserList)
+		{
+			<section class="card col-2">
+				<img class="card-img-top" src="@user.ImageUrl" alt="User profile pic"/>
+				<label class="card-text">@user.FullName</label>
+			</section>
+		}
+	}
+	else
+	{
+		<section>Search did not gave any results</section>
+	}
+</article>

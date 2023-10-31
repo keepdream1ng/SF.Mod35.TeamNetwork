@@ -14,11 +14,11 @@
             <div class="container">
                 <div class="row" style="width: 100%">
 					<a class="col-2 navbar-brand" asp-controller="Home" asp-action="Index">TeamNetwork</a>
-					<form class="col input-group">
+					<form class="col input-group" method="post" asp-controller="Search" asp-action="UserList">
                         <div class="input-group-text">
                             Search:
                         </div>
-						<input class="form-control" type="text" />
+						<input class="form-control" type="text" name="search"/>
 					</form>
 					<partial name="LogoutButton"/>
                 </div>
