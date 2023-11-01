@@ -18,6 +18,7 @@ public class ConnectionsConfiguration : IEntityTypeConfiguration<Connection>
             .WithMany()
             .HasForeignKey(x => x.UserId)
             .OnDelete(DeleteBehavior.ClientNoAction);
+        // Our network doesnt support deleting user profile anyway...
 
         builder
             .HasOne<User>(x => x.ConnectedUser)
