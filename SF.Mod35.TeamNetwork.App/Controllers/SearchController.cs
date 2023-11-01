@@ -54,9 +54,18 @@ public class SearchController : Controller
 		else
 		{
 			model.UserList = userSearch.Select(u =>
-				new Tuple<User, ConnectionStatus>(u, _unitOfWork.ConnectionsRepo.GetConnectionStatus(currentUser, u))).ToList();
+				new Tuple<User, ConnectionStatus>(u, GetConnectionStatus(currentUser, u))).ToList();
 		}
 		return model;
+	}
+
+	private ConnectionStatus GetConnectionStatus(User currentUser, User target)
+	{
+		if (currentUser.Id == target.Id)
+		{
+			return ConnectionStatus.Perfect;
+		}
+		return _unitOfWork.ConnectionsRepo.GetConnectionStatus(currentUser, target);
 	}
 }
 

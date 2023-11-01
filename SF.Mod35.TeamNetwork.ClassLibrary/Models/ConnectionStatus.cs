@@ -7,5 +7,6 @@ public enum ConnectionStatus
 	Declined,
 	Following,
 	Pending,
-	Mutual
+	Mutual,
+	Perfect
 }
