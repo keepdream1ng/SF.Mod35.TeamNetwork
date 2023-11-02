@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SF.Mod35.TeamNetwork.App.DataAccess.UoW;
 using SF.Mod35.TeamNetwork.App.Views.Profile;
 using SF.Mod35.TeamNetwork.ClassLibrary.Models;
 
@@ -13,11 +14,17 @@ public class ProfileController : Controller
 	private IMapper _mapper;
 	private readonly UserManager<User> _userManager;
 	private readonly SignInManager<User> _signInManager;
+	private readonly IUnitOfWork _unitOfWork;
 
-	public ProfileController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
+	public ProfileController(
+		UserManager<User> userManager,
+		SignInManager<User> signInManager,
+		IUnitOfWork unitOfWork,
+		IMapper mapper)
 	{
 		_userManager = userManager;
 		_signInManager = signInManager;
+		_unitOfWork = unitOfWork;
 		_mapper = mapper;
 	}
 
@@ -27,8 +34,15 @@ public class ProfileController : Controller
 	{
 		if (_signInManager.IsSignedIn(User))
 		{
-			var userModel = await _userManager.GetUserAsync(User);
-			return View("UserProfile", new UserProfileModel(userModel));
+			var currentUser = await _userManager.GetUserAsync(User);
+			var profileModel = new UserProfileModel()
+			{
+				UserData = currentUser,
+				ConnectedUsers = _unitOfWork.ConnectionsRepo.GetConnectedWithUser(currentUser, ConnectionStatus.Mutual),
+				Following = _unitOfWork.ConnectionsRepo.GetConnectedWithUser(currentUser, ConnectionStatus.Following),
+				PendingConnection = _unitOfWork.ConnectionsRepo.GetConnectedWithUser(currentUser, ConnectionStatus.Pending),
+			};
+			return View("UserProfile", profileModel);
 		}
 		else
 		{

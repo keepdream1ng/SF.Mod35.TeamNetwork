@@ -7,8 +7,7 @@ namespace SF.Mod35.TeamNetwork.App.Views.Profile;
 public class UserProfileModel
 {
 	public User UserData { get; set; }
-	public UserProfileModel(User user)
-	{
-		UserData = user;
-	}
+	public List<User> ConnectedUsers { get; set; }
+	public List<User> Following { get; set; }
+	public List<User> PendingConnection { get; set; }
 }

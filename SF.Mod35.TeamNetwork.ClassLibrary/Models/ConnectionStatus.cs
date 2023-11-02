@@ -8,5 +8,13 @@ public enum ConnectionStatus
 	Following,
 	Pending,
 	Mutual,
-	Perfect
+	Perfect,
+	// For the future updates: 
+	Teammate,
+	Dating,
+	Married,
+	Friend,
+	Bestie,
+	Enemy,
+	Ignored
 }

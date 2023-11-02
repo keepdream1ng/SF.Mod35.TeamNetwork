@@ -8,9 +8,16 @@
 		@foreach (var user in @Model.UserList)
 		{
 			<section class="card col-2">
-				<img class="card-img-top" src="@user.Item1.ImageUrl" alt="User profile pic"/>
+				<img class="card-img" src="@user.Item1.ImageUrl" alt="User profile pic"/>
 				<label class="card-text">@user.Item1.FullName</label>
-				<label class="card-text">@user.Item2.ToString()</label>
+				@if (user.Item2 == ClassLibrary.Models.ConnectionStatus.Absent)
+				{
+					<form asp-controller="Connections" asp-action="SuggestConnection" asp-route-id="@user.Item1.Id" method="post">
+						<button type="submit" class="btn btn-primary">
+							Send connect request
+						</button>
+					</form>
+				}
 			</section>
 		}
 	}

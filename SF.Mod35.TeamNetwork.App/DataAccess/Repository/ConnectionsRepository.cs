@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SF.Mod35.TeamNetwork.ClassLibrary.Models;
 
 namespace SF.Mod35.TeamNetwork.App.DataAccess.Repository;
@@ -13,7 +14,7 @@ public class ConnectionsRepository : Repository<Connection>
 	{
 		try
 		{
-			if (GetConnectionStatus(user, target) != ConnectionStatus.Absent)
+			if (GetConnectionStatus(user, target) == ConnectionStatus.Absent)
 			{
 				var connection = new Connection()
 				{
@@ -47,7 +48,9 @@ public class ConnectionsRepository : Repository<Connection>
 
 	public List<User> GetConnectedWithUser(User user, ConnectionStatus status)
 	{
-		var queryForConnected = Set.AsEnumerable()
+		var queryForConnected = Set
+			.Include(c => c.ConnectedUser)
+			.AsEnumerable()
 			.Where(c => c.UserId == user.Id)
 			.Where(c => c.Status == status)
 			.Select(c => c.ConnectedUser);

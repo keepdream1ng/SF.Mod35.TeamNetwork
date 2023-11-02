@@ -49,10 +49,76 @@
 				@Model.UserData.Email
 			</span>
 		</div>
-		<div class="row">
-			<h4 class="col-12 text-secondary text-center">
-				Friends list.
-			</h4>
-		</div>
+		@if (Model.ConnectedUsers.Count > 0)
+		{
+			<div class="row">
+				<h4 class="col-12 text-secondary text-center">
+					Connections list.
+				</h4>
+			</div>
+			<div class="row">
+				@foreach (var user in Model.ConnectedUsers)
+				{
+					<div class="card col-2">
+						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
+						<label class="card-text">@user.FullName</label>
+						<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post">
+							<button type="submit" class="btn btn-primary">
+								Remove
+							</button>
+						</form>
+					</div>
+				}
+			</div>
+		}
+		@if (Model.Following.Count > 0)
+		{
+			<div class="row">
+				<h4 class="col-12 text-secondary text-center">
+					You are following.
+				</h4>
+			</div>
+			<div class="row">
+				@foreach (var user in Model.Following)
+				{
+					<div class="card col-2">
+						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
+						<label class="card-text">@user.FullName</label>
+						<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post">
+							<button type="submit" class="btn btn-primary">
+								Unfollow
+							</button>
+						</form>
+					</div>
+				}
+			</div>
+		}
+		@if (Model.PendingConnection.Count > 0)
+		{
+			<div class="row">
+				<h4 class="col-12 text-secondary text-center">
+					Pending connection requests.
+				</h4>
+			</div>
+			<div class="row">
+				@foreach (var user in Model.PendingConnection)
+				{
+					<div class="card col-2">
+						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
+						<label class="card-text">@user.FullName</label>
+						<form asp-controller="Connections" asp-action="ApproveConnection" asp-route-id="@user.Id" method="post">
+							<button type="submit" class="btn btn-primary">
+								Approve
+							</button>
+						</form>
+						<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post">
+							<button type="submit" class="btn btn-primary">
+								Decline
+							</button>
+						</form>
+					</div>
+				}
+			</div>
+		}
 	</section>
 </article>
