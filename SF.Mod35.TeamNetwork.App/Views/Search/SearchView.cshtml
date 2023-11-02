@@ -10,7 +10,7 @@
 			<section class="card col-2">
 				<img class="card-img" src="@user.Item1.ImageUrl" alt="User profile pic"/>
 				<label class="card-text">@user.Item1.FullName</label>
-				@if (user.Item2 == ClassLibrary.Models.ConnectionStatus.Absent)
+				@if ((user.Item2 == ConnectionStatus.Absent)||(user.Item2 == ConnectionStatus.Declined))
 				{
 					<form asp-controller="Connections" asp-action="SuggestConnection" asp-route-id="@user.Item1.Id" method="post">
 						<button type="submit" class="btn btn-primary">

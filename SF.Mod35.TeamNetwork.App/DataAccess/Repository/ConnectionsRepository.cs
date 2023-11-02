@@ -14,18 +14,15 @@ public class ConnectionsRepository : Repository<Connection>
 	{
 		try
 		{
-			if (GetConnectionStatus(user, target) == ConnectionStatus.Absent)
+			var connection = new Connection()
 			{
-				var connection = new Connection()
-				{
-					UserId = user.Id,
-					User = user,
-					ConnectedUserId = target.Id,
-					ConnectedUser = target,
-					Status = status
-				};
-				Create(connection);
-			}
+				UserId = user.Id,
+				User = user,
+				ConnectedUserId = target.Id,
+				ConnectedUser = target,
+				Status = status
+			};
+			Create(connection);
 		}
 		catch (Exception ex)
 		{
