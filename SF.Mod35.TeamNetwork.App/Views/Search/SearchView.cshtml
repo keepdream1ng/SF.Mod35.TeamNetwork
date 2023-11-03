@@ -2,12 +2,12 @@
 @{
 }
 
-<article class="row">
+<article class="row g-2">
 	@if (Model.UserList.Count != 0)
 	{
 		@foreach (var user in @Model.UserList)
 		{
-			<section class="card col-2">
+			<section class="card col-6 col-md-2">
 				<img class="card-img" src="@user.Item1.ImageUrl" alt="User profile pic"/>
 				<label class="card-text">@user.Item1.FullName</label>
 				@if ((user.Item2 == ConnectionStatus.Absent)||(user.Item2 == ConnectionStatus.Declined))

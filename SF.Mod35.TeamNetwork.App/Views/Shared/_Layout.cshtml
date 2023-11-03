@@ -13,7 +13,7 @@
 		<nav class="navbar navbar-light bg-white border-bottom box-shadow mb-3">
 			<div class="container">
 				<div class="row" style="width: 100%">
-					<a class="col-1 navbar-brand" asp-controller="Home" asp-action="Index">
+					<a class="col-sm-2 col-md-1 navbar-brand" style="padding: 0;" asp-controller="Home" asp-action="Index">
 						@Html.Partial("Logo", new LogoViewModel("filter: drop-shadow(0px 0px 5px blue); margin: 0 0.5rem"))
 					</a>
 					<form class="col input-group" method="post" asp-controller="Search" asp-action="UserList">
