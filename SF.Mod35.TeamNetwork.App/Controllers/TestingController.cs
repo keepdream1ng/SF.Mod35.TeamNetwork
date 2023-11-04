@@ -8,12 +8,13 @@ using SF.Mod35.TeamNetwork.App.Views.Search;
 using SF.Mod35.TeamNetwork.App.DataAccess.Repository;
 using SF.Mod35.TeamNetwork.App.DataAccess.UoW;
 using SF.Mod35.TeamNetwork.Testing;
+using SF.Mod35.TeamNetwork.App.Views.Testing;
 
 namespace SF.Mod35.TeamNetwork.App.Controllers;
 
 /// <summary>
 /// This controller will be used for testing purposes like
-/// creating users and easily switching between they profiles.
+/// creating users and easily switching between created profiles.
 /// </summary>
 public class TestingController : Controller
 {
@@ -28,11 +29,12 @@ public class TestingController : Controller
 
     [Route("TestingEnviroment")]
     [HttpGet]
-    public async Task<IActionResult> TestingEnviroment(string search)
+    public async Task<IActionResult> TestingEnviroment()
     {
         if (IsTestingEnabled())
         {
-            return View("TestingEnviroment");
+            List<User> users = _userManager.Users.AsEnumerable().ToList();
+            return View("TestingEnviroment", new TestingEnviromentModel(users, _testPassword));
         }
         return RedirectToAction("Index", "Home");
     }

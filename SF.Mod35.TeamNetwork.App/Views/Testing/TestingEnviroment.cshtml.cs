@@ -1,12 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SF.Mod35.TeamNetwork.ClassLibrary.Models;
 
-namespace SF.Mod35.TeamNetwork.App.Views.Testing
+namespace SF.Mod35.TeamNetwork.App.Views.Testing;
+
+public class TestingEnviromentModel
 {
-    public class TestingEnviromentModel : PageModel
+    public List<User> Users { get; set; }
+    public string TestingPassword { get; set; }
+
+    public TestingEnviromentModel(List<User> users, string password)
     {
-        public void OnGet()
-        {
-        }
+        Users = users;
+        TestingPassword = password;
     }
 }

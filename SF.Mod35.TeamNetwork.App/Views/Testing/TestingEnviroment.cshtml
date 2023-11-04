@@ -1,8 +1,35 @@
-﻿@page
-@model SF.Mod35.TeamNetwork.App.Views.Testing.TestingEnviromentModel
+﻿@model SF.Mod35.TeamNetwork.App.Views.Testing.TestingEnviromentModel
 @{
 }
 
-<p class="alert-danger">
-	This is testing enviroment
-</p>
+<section class="row">
+	<a class="btn btn-lg btn-danger " style="padding: 0;" asp-controller="Testing" asp-action="Generate">
+		Generate 35 test users
+	</a>
+</section>
+<h2 class="row">
+	Panel for quick login.
+</h2>
+<article class="row g-2">
+	@if (Model.Users.Count != 0)
+	{
+		@foreach (var user in @Model.Users)
+		{
+			<section class="card col-6 col-md-1">
+				<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
+				<label class="card-text small">@user.FullName</label>
+				<form  method="post" target="_blank" asp-controller="AccountManager" asp-action="Login">
+					<input style="display:none" name="Email" value="@user.Email" />
+					<input style="display:none" name="Password" value="@Model.TestingPassword" />
+					<button type="submit" class="btn btn-sm btn-danger">
+						Try me
+					</button>
+				</form>
+			</section>
+		}
+	}
+	else
+	{
+		<section>Database has no users yet</section>
+	}
+</article>
