@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SF.Mod35.TeamNetwork.ClassLibrary\SF.Mod35.TeamNetwork.ClassLibrary.csproj" />
+    <ProjectReference Include="..\SF.Mod35.TeamNetwork.Testing\SF.Mod35.TeamNetwork.Testing.csproj" />
   </ItemGroup>
 
 </Project>
