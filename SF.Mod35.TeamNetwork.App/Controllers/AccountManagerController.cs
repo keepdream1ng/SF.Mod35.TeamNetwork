@@ -28,6 +28,7 @@ public class AccountManagerController : Controller
 
 	[Route("Login")]
 	[HttpPost]
+	// Comment out next attribute to login without logout in the testing enviroment.
 	[ValidateAntiForgeryToken]
 	public async Task<IActionResult> Login(LoginViewModel model)
 	{

@@ -58,7 +58,6 @@ public class TestingController : Controller
     private bool IsTestingEnabled()
     {
         string enableTestController = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-        // Return true if the environment variable is set to "true"
         return string.Equals(enableTestController, "Development", StringComparison.OrdinalIgnoreCase);
     }
 }
