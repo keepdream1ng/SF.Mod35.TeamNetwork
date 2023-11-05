@@ -17,5 +17,7 @@ public class ApplicationDbContext : IdentityDbContext<User>
 		base.OnModelCreating(modelBuilder);
 
 		modelBuilder.ApplyConfiguration<Connection>(new ConnectionsConfiguration());
+		modelBuilder.ApplyConfiguration<Message>(new MessageConfiguration());
+		modelBuilder.ApplyConfiguration<Dialog>(new DialogConfiguration());
 	}
 }

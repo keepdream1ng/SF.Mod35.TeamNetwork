@@ -23,5 +23,10 @@ public class DialogConfiguration : IEntityTypeConfiguration<Dialog>
             .WithMany()
             .HasForeignKey(x => x.User2Id)
             .OnDelete(DeleteBehavior.ClientNoAction);
+
+        builder
+            .HasMany<Message>(x => x.Messages)
+            .WithOne()
+            .OnDelete(DeleteBehavior.ClientNoAction);
 	}
 }

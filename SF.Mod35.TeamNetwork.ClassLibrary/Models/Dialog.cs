@@ -17,5 +17,5 @@ public class Dialog
 
 	public string User2Id { get; set; }
 	public User User2 { get; set; }
-	public List<Message> messages { get; set; }
+	public List<Message> Messages { get; set; }
 }
