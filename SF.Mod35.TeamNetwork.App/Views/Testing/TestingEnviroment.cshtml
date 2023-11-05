@@ -21,7 +21,7 @@
 			<section class="card col-6 col-md-1">
 				<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
 				<label class="card-text small">@user.FullName</label>
-				<form method="post" target="_blank" asp-controller="AccountManager" asp-action="Login">
+				<form method="post" class="mt-auto" target="_blank" asp-controller="AccountManager" asp-action="Login">
 					<input style="display:none" name="Email" value="@user.Email" />
 					<input style="display:none" name="Password" value="@Model.TestingPassword" />
 					<button type="submit" class="btn btn-sm btn-danger">

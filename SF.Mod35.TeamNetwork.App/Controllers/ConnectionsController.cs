@@ -33,9 +33,18 @@ public class ConnectionsController : Controller
 		User currentUser = await _userManager.GetUserAsync(User);
 		User target = await _userManager.FindByIdAsync(id);
 
-		var result1 = _unitOfWork.ConnectionsRepo.CreateConnection(currentUser, target, ConnectionStatus.Following);
-		var result2 = _unitOfWork.ConnectionsRepo.CreateConnection(target, currentUser, ConnectionStatus.Pending);
-		var result3 = await _unitOfWork.SaveChanges();
+		var connectionFromTarget = _unitOfWork.ConnectionsRepo.GetConnectionStatus(target, currentUser);
+		if ((connectionFromTarget != null) && (connectionFromTarget == ConnectionStatus.Following))
+		{
+			_unitOfWork.ConnectionsRepo.SetConnectionStatus(target, currentUser, ConnectionStatus.Mutual);
+			_unitOfWork.ConnectionsRepo.CreateConnection(currentUser, target, ConnectionStatus.Mutual);
+		}
+		else
+		{
+			_unitOfWork.ConnectionsRepo.CreateConnection(currentUser, target, ConnectionStatus.Following);
+			_unitOfWork.ConnectionsRepo.CreateConnection(target, currentUser, ConnectionStatus.Pending);
+		}
+		var result = await _unitOfWork.SaveChanges();
 		return RedirectToAction("MyPage", "Profile");
 	}
 

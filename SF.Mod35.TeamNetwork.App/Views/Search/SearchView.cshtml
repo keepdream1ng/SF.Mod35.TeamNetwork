@@ -12,7 +12,7 @@
 				<label class="card-text">@user.Item1.FullName</label>
 				@if ((user.Item2 == ConnectionStatus.Absent)||(user.Item2 == ConnectionStatus.Declined))
 				{
-					<form asp-controller="Connections" asp-action="SuggestConnection" asp-route-id="@user.Item1.Id" method="post">
+					<form asp-controller="Connections" asp-action="SuggestConnection" asp-route-id="@user.Item1.Id" method="post" class="mt-auto">
 						<button type="submit" class="btn btn-primary">
 							Send connect request
 						</button>

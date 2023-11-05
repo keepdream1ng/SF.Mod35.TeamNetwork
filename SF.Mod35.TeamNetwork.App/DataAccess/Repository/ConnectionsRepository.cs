@@ -59,8 +59,15 @@ public class ConnectionsRepository : Repository<Connection>
 		var connection = GetConnection(user, target);
 		if (connection != null)
 		{
-			connection.Status = status;
-			Update(connection);
+			if (status == ConnectionStatus.Declined)
+			{
+				Delete(connection);
+			}
+			else
+			{
+				connection.Status = status;
+				Update(connection);
+			}
 			return true;
 		}
 		return false;

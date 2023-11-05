@@ -45,7 +45,7 @@ public class SearchController : Controller
         {
             userSearch = _userManager.Users
                     .AsEnumerable()
-                    .Where(x => x.FirstName.ToLower().Contains(search.ToLower()))
+                    .Where(x => x.FullName.ToLower().Contains(search.ToLower()))
                     .ToList();
         }
         else
