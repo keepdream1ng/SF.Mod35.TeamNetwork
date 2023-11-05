@@ -11,6 +11,8 @@ public class UnitOfWork : IDisposable, IUnitOfWork
 {
 	private ApplicationDbContext _appContext;
 	private ConnectionsRepository _connectionsRepo;
+	private DialogRepository _dialogRepo;
+	private MessagesRepository _messagesRepo;
 	public ConnectionsRepository ConnectionsRepo
 	{
 		get
@@ -22,6 +24,30 @@ public class UnitOfWork : IDisposable, IUnitOfWork
 			return _connectionsRepo;
 		}
 	}
+	public MessagesRepository MessagesRepo
+	{
+		get
+		{
+			if (_messagesRepo == null)
+			{
+				_messagesRepo = new MessagesRepository(_appContext);
+			}
+			return _messagesRepo;
+		}
+	}
+	public DialogRepository DialogRepo
+	{
+		get
+		{
+			if (_dialogRepo == null)
+			{
+				_dialogRepo = new DialogRepository(_appContext);
+			}
+			return _dialogRepo;
+		}
+	}
+
+
 
 	public UnitOfWork(ApplicationDbContext app)
 	{
