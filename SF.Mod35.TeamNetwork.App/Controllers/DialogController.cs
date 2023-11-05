@@ -41,14 +41,12 @@ public class DialogController : Controller
 			_unitOfWork.DialogRepo.Create(dialog);
 			var result = await _unitOfWork.SaveChanges();
 		}
-		bool reverseMessageMapping = currentUser.Id != dialog.User1Id;
 
 		var model = new DialogViewModel()
 		{
-			Viewer = reverseMessageMapping ? respondent : currentUser,
-			Respondent = reverseMessageMapping ? currentUser : respondent,
+			Respondent = respondent,
 			MessageHistory = dialog.Messages,
-			ReverseMessageMapping = reverseMessageMapping
+			ReverseMessageMapping = (currentUser.Id != dialog.User1Id)
 		};
 		return View("DialogView", model);
 	}
@@ -61,13 +59,17 @@ public class DialogController : Controller
 		{
 			User currentUser = await _userManager.GetUserAsync(User);
 			User respondent = await _userManager.FindByIdAsync(id);
-			Dialog dialog = _unitOfWork.DialogRepo.GetDialogByUsers(currentUser.Id, respondent.Id);
-			Message message = new Message(dialog, model.NewMessage, currentUser.Id == dialog.User1Id);
+			Dialog dialog = _unitOfWork.DialogRepo.GetDialogByUsers(currentUser.Id, id);
+			bool reverseMessageMapping = (currentUser.Id != dialog.User1Id);
+			Message message = new Message(dialog, model.NewMessage, !reverseMessageMapping);
 			_unitOfWork.MessagesRepo.Create(message);
 			_unitOfWork.DialogRepo.Update(dialog);
-			_ = _unitOfWork.SaveChanges();
-			model.MessageHistory.Add(message);
+			var result = await _unitOfWork.SaveChanges();
+
+			model.MessageHistory = dialog.Messages;
+			model.Respondent = respondent;
 			model.NewMessage = string.Empty;
+			model.ReverseMessageMapping = reverseMessageMapping;
 		}
 
 		return View("DialogView", model);

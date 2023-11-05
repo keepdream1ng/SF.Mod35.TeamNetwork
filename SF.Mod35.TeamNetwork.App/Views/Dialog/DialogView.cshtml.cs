@@ -6,7 +6,6 @@ namespace SF.Mod35.TeamNetwork.App.Views.Dialog;
 
 public class DialogViewModel
 {
-	public User Viewer { get; set; }
 	public User Respondent { get; set; }
 
 	public List<Message> MessageHistory { get; set; }

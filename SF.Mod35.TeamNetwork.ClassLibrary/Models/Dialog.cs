@@ -19,6 +19,11 @@ public class Dialog
 	public User User2 { get; set; }
 	public List<Message> Messages { get; set; }
 
+    public Dialog()
+    {
+		// EF needs it.
+    }
+
     public Dialog(User user1, User user2)
     {
 		User1 = user1;

@@ -13,7 +13,8 @@ public class MessageConfiguration : IEntityTypeConfiguration<Message>
 
 		builder
 			.HasOne<Dialog>(x => x.Dialog)
-			.WithMany()
-			.HasForeignKey(x => x.DialogId);
+			.WithMany(d => d.Messages)
+			.HasForeignKey(x => x.DialogId)
+			.OnDelete(DeleteBehavior.ClientNoAction);
 	}
 }

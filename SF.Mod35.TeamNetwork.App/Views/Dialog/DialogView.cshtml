@@ -42,8 +42,9 @@
 		New message:
 	</label>
 	<form class="col-12" method="post" asp-controller="Dialog" asp-action="NewMessage" asp-route-id="@Model.Respondent.Id">
+		<div asp-validation-summary="ModelOnly"></div>
 		<div class="row">
-			<input class="form-control-lg emojify" type="text" />
+			<input asp-for="NewMessage" class="form-control-lg emojify" type="text" required/>
 		</div>
 		<div class="row">
 			<button class="btn btn-primary" type="submit">

@@ -25,8 +25,8 @@ public class DialogConfiguration : IEntityTypeConfiguration<Dialog>
             .OnDelete(DeleteBehavior.ClientNoAction);
 
         builder
-            .HasMany<Message>(x => x.Messages)
-            .WithOne()
-            .OnDelete(DeleteBehavior.ClientNoAction);
+            .HasMany<Message>(d => d.Messages)
+            .WithOne(m => m.Dialog)
+            .OnDelete(DeleteBehavior.Cascade);
 	}
 }
