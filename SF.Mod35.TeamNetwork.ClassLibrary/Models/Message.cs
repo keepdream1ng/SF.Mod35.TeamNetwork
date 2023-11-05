@@ -13,4 +13,13 @@ public  class Message
 	public Dialog Dialog { get; set; }
 	public bool FromUser1 { get; set; }
 	public string Text { get; set; }
+
+    public Message(Dialog dialog, string text, bool fromUser1)
+    {
+		Dialog = dialog;
+		DialogId = dialog.Id;
+		Text = text;
+		FromUser1 = fromUser1;
+		dialog.Messages.Add(this);
+    }
 }

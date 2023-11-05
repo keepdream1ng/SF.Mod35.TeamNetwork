@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SF.Mod35.TeamNetwork.App", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SF.Mod35.TeamNetwork.ClassLibrary", "SF.Mod35.TeamNetwork.ClassLibrary\SF.Mod35.TeamNetwork.ClassLibrary.csproj", "{2BA04079-6BA1-4C64-8702-109151F837A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SF.Mod35.TeamNetwork.Testing", "SF.Mod35.TeamNetwork.Testing\SF.Mod35.TeamNetwork.Testing.csproj", "{27030F23-C564-4345-AB0B-2358924AD7DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SF.Mod35.TeamNetwork.Testing", "SF.Mod35.TeamNetwork.Testing\SF.Mod35.TeamNetwork.Testing.csproj", "{27030F23-C564-4345-AB0B-2358924AD7DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 
 namespace SF.Mod35.TeamNetwork.App.DataAccess.Repository;
 
-public class MessagesRepository : Repository<Connection>
+public class MessagesRepository : Repository<Message>
 {
 	public MessagesRepository(ApplicationDbContext db) : base(db)
 	{

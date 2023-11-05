@@ -1,0 +1,54 @@
+﻿@model SF.Mod35.TeamNetwork.App.Views.Dialog.DialogViewModel
+@{
+}
+
+<form method="get" class="row" asp-controller="Profile" asp-action="MyPage">
+	<button class="btn btn-primary" type="submit">
+		Back to profile.
+	</button>
+</form>
+
+<div class="row">
+	<h3 class="col-12 text-center">
+		Chat with @Model.Respondent.FullName
+	</h3>
+</div>
+
+<section class="row g-4">
+	<label class="col-12 text-secondary">
+		Messages:
+	</label>
+	@if (Model.MessageHistory.Count != 0)
+	{
+		foreach (Message message in Model.MessageHistory)
+		{
+			<div class="col-12 card">
+				<p class="card-text">
+					@message.Text
+				</p>
+			</div>
+		}
+	}
+	else
+	{
+		<p class="col-12 text-center">
+			No messages yet.
+		</p>
+	}
+</section>
+
+<section class="row">
+	<label class="col-12 text-secondary">
+		New message:
+	</label>
+	<form class="col-12" method="post" asp-controller="Dialog" asp-action="NewMessage" asp-route-id="@Model.Respondent.Id">
+		<div class="row">
+			<input class="form-control-lg emojify" type="text" />
+		</div>
+		<div class="row">
+			<button class="btn btn-primary" type="submit">
+				Send
+			</button>
+		</div>
+	</form>
+</section>
