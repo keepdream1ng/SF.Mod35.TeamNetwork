@@ -27,31 +27,14 @@ public class DialogController : Controller
 	}
 
 	[Route("Chat")]
-	[HttpPost]
-	public async Task<IActionResult> Chat(string id)
+	[HttpGet]
+	public async Task<IActionResult> Chat([FromQuery] string id)
 	{
-		User currentUser = await _userManager.GetUserAsync(User);
-		User respondent = await _userManager.FindByIdAsync(id);
-
-		Dialog dialog = _unitOfWork.DialogRepo.GetDialogByUsers(currentUser.Id, respondent.Id);
-		// If chat is brand new.
-		if (dialog == null)
-		{
-			dialog = new Dialog(currentUser, respondent);
-			_unitOfWork.DialogRepo.Create(dialog);
-			var result = await _unitOfWork.SaveChanges();
-		}
-
-		var model = new DialogViewModel()
-		{
-			Respondent = respondent,
-			MessageHistory = dialog.Messages,
-			ReverseMessageMapping = (currentUser.Id != dialog.User1Id)
-		};
+		DialogViewModel model = await GetDialogWith(id);
 		return View("DialogView", model);
 	}
 
-	[Route("NewMessage")]
+	[Route("Chat")]
 	[HttpPost]
 	public async Task<IActionResult> NewMessage(string id, DialogViewModel model)
 	{
@@ -71,7 +54,34 @@ public class DialogController : Controller
 			model.NewMessage = string.Empty;
 			model.ReverseMessageMapping = reverseMessageMapping;
 		}
+		else
+		{
+			model = await GetDialogWith(id);
+		}
 
 		return View("DialogView", model);
+	}
+	
+	private async Task<DialogViewModel> GetDialogWith(string id)
+	{
+		User currentUser = await _userManager.GetUserAsync(User);
+		User respondent = await _userManager.FindByIdAsync(id);
+
+		Dialog dialog = _unitOfWork.DialogRepo.GetDialogByUsers(currentUser.Id, respondent.Id);
+		// If chat is brand new.
+		if (dialog == null)
+		{
+			dialog = new Dialog(currentUser, respondent);
+			_unitOfWork.DialogRepo.Create(dialog);
+			var result = await _unitOfWork.SaveChanges();
+		}
+
+		var model = new DialogViewModel()
+		{
+			Respondent = respondent,
+			MessageHistory = dialog.Messages,
+			ReverseMessageMapping = (currentUser.Id != dialog.User1Id)
+		};
+		return model;
 	}
 }

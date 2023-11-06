@@ -62,11 +62,11 @@
 					<div class="card col-6 col-md-2">
 						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
 						<label class="card-text">@user.FullName</label>
-						<form asp-controller="Dialog" asp-action="Chat" asp-route-id="@user.Id" method="post" class="mt-auto">
-							<button type="submit" class="btn btn-primary">
+						<div>
+							<a asp-controller="Dialog" asp-action="Chat" asp-route-id="@user.Id" class="btn btn-primary mt-auto">
 								Chat
-							</button>
-						</form>
+							</a>
+						</div>
 						<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post" class="align-self-end mt-1">
 							<button type="submit" class="btn btn-primary">
 								Remove
