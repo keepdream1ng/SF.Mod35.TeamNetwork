@@ -6,7 +6,7 @@
 	</h2>
 </div>
 <article class="row g-3">
-	<section class="col-6 col-md-4">
+	<section class="col-md-4">
 		<div class="row">
 			<img alt="profile photo" src="@Model.UserData.ImageUrl" />
 		</div>
@@ -61,7 +61,7 @@
 				{
 					<div class="card col-6 col-md-2">
 						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
-						<label class="card-text">@user.FullName</label>
+						<label class="card-title">@user.FullName</label>
 						<div>
 							<a asp-controller="Dialog" asp-action="Chat" asp-route-id="@user.Id" class="btn btn-primary mt-auto">
 								Chat
@@ -86,14 +86,19 @@
 			<div class="row">
 				@foreach (var user in Model.Following)
 				{
-					<div class="card col-6 col-md-2">
-						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
-						<label class="card-text">@user.FullName</label>
-						<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post" class="mt-auto">
-							<button type="submit" class="btn btn-primary">
-								Unfollow
-							</button>
-						</form>
+					<div class="card col-lg-6 col-xl-4" style="flex-direction: row">
+						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" style="max-width:50%; object-fit:cover"/>
+						<div class="card-body">
+							<label class="card-title">@user.FullName</label>
+							<p class="card-text">
+								@user.Status
+							</p>
+							<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post" class="mt-auto align-self-end">
+								<button type="submit" class="btn btn-primary">
+									Unfollow
+								</button>
+							</form>
+						</div>
 					</div>
 				}
 			</div>
@@ -110,7 +115,7 @@
 				{
 					<div class="card col-6 col-md-2">
 						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
-						<label class="card-text">@user.FullName</label>
+						<label class="card-title">@user.FullName</label>
 						<form asp-controller="Connections" asp-action="ApproveConnection" asp-route-id="@user.Id" method="post" class="mt-auto">
 							<button type="submit" class="btn btn-primary">
 								Approve
