@@ -1,0 +1,134 @@
+﻿@model SF.Mod35.TeamNetwork.App.Views.Profile.UserProfileModel
+
+<div class="row">
+	<h2 class="col-12 text-center">
+		@Model.UserData.FullName
+	</h2>
+</div>
+<article class="row g-3">
+	<section class="col-md-4">
+		<div class="row">
+			<img alt="profile photo" src="@Model.UserData.ImageUrl" />
+		</div>
+		<div class="row p-3">
+			<a class="btn btn-primary" asp-controller="Profile" asp-action="Edit">
+				Edit profile
+			</a>
+		</div>
+	</section>
+	<section class="col">
+		<div class="row">
+			<label class="col-auto text-secondary">
+				Status:
+			</label>
+			<span class="col">
+				@Model.UserData.Status
+			</span>
+		</div>
+		<div class="row">
+			<label class="col-auto text-secondary">
+				Date of birth:
+			</label>
+			<span class="col">
+				@DateOnly.FromDateTime(Model.UserData.DateOfBirth)
+			</span>
+		</div>
+		<div class="row">
+			<label class="col-auto text-secondary">
+				About:
+			</label>
+			<span class="col">
+				@Model.UserData.About
+			</span>
+		</div>
+		<div class="row">
+			<label class="col-auto text-secondary">
+				Email:
+			</label>
+			<span class="col">
+				@Model.UserData.Email
+			</span>
+		</div>
+		@if (Model.ConnectedUsers.Count > 0)
+		{
+			<div class="row">
+				<h4 class="col-12 text-secondary text-center">
+					Connections list.
+				</h4>
+			</div>
+			<div class="row">
+				@foreach (var user in Model.ConnectedUsers)
+				{
+					<div class="card col-6 col-md-2">
+						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
+						<label class="card-title">@user.FullName</label>
+						<div>
+							<a asp-controller="Dialog" asp-action="Chat" asp-route-id="@user.Id" class="btn btn-primary mt-auto">
+								Chat
+							</a>
+						</div>
+						<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post" class="align-self-end mt-1">
+							<button type="submit" class="btn btn-primary">
+								Remove
+							</button>
+						</form>
+					</div>
+				}
+			</div>
+		}
+		@if (Model.Following.Count > 0)
+		{
+			<div class="row">
+				<h4 class="col-12 text-secondary text-center">
+					You are following.
+				</h4>
+			</div>
+			<div class="row">
+				@foreach (var user in Model.Following)
+				{
+					<div class="card col-lg-6 col-xl-4" style="flex-direction: row">
+						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" style="max-width:50%; object-fit:cover"/>
+						<div class="card-body">
+							<label class="card-title">@user.FullName</label>
+							<p class="card-text">
+								@user.Status
+							</p>
+							<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post" class="mt-auto align-self-end">
+								<button type="submit" class="btn btn-primary">
+									Unfollow
+								</button>
+							</form>
+						</div>
+					</div>
+				}
+			</div>
+		}
+		@if (Model.PendingConnection.Count > 0)
+		{
+			<div class="row">
+				<h4 class="col-12 text-secondary text-center">
+					Pending connection requests.
+				</h4>
+			</div>
+			<div class="row">
+				@foreach (var user in Model.PendingConnection)
+				{
+					<div class="card col-6 col-md-2">
+						<img class="card-img" src="@user.ImageUrl" alt="User profile pic" />
+						<label class="card-title">@user.FullName</label>
+						<form asp-controller="Connections" asp-action="ApproveConnection" asp-route-id="@user.Id" method="post" class="mt-auto">
+							<button type="submit" class="btn btn-primary">
+								Approve
+							</button>
+						</form>
+						<form asp-controller="Connections" asp-action="DeclineConnection" asp-route-id="@user.Id" method="post" class="align-self-end mt-1">
+							<button type="submit" class="btn btn-primary">
+								Decline
+							</button>
+						</form>
+					</div>
+				}
+			</div>
+		}
+	</section>
+</article>

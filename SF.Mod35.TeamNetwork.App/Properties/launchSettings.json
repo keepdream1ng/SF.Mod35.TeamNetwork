@@ -26,6 +26,25 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+    "docker_db1": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_LOCATION": "Docker"
+      }
+    },
+    "not_devolopement_docker_db1": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://localhost:5000",
+      "environmentVariables": {
+        "DB_LOCATION": "Docker"
+      }
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,

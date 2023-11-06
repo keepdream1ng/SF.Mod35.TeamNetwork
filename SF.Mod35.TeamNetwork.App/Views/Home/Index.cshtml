@@ -1,0 +1,23 @@
+﻿@using SF.Mod35.TeamNetwork.App.Views.Register;
+
+@{
+    ViewData["Title"] = "Home";
+}
+<div class="row">
+    <div class="col-4 col-md-8">
+		@Html.Partial("Logo", new LogoViewModel("margin: 10% 0;"))
+    </div>
+
+    <div class="col-8 col-md-4">
+        <div class="row">
+            <partial name="LoginView"/>
+        </div>
+        <div class="row">
+            <partial name="RegisterStart"/>
+        </div>
+    </div>
+
+</div>
+
+@* This page has two partial views that need clientside validation *@
+@section Scripts{<partial name="_ValidationScriptsPartial" />}

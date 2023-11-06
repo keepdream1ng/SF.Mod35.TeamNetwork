@@ -1,0 +1,31 @@
+﻿@model SF.Mod35.TeamNetwork.App.Views.Search.SearchViewModel
+@{
+}
+
+<article class="row g-2">
+	@if (Model.UserList.Count != 0)
+	{
+		@foreach (var user in @Model.UserList)
+		{
+			<section class="card col-6 col-md-2">
+				<img class="card-img" src="@user.Item1.ImageUrl" alt="User profile pic" />
+				<label class="card-title">@user.Item1.FullName</label>
+				<p class="card-text">
+					@user.Item1.About
+				</p>
+				@if ((user.Item2 == ConnectionStatus.Absent) || (user.Item2 == ConnectionStatus.Declined))
+				{
+					<form asp-controller="Connections" asp-action="SuggestConnection" asp-route-id="@user.Item1.Id" method="post" class="mt-auto">
+						<button type="submit" class="btn btn-primary">
+							Send connect request
+						</button>
+					</form>
+				}
+			</section>
+		}
+	}
+	else
+	{
+		<section>Search did not gave any results</section>
+	}
+</article>
