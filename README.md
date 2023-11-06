@@ -6,4 +6,4 @@ Also, I made this route for website: /TestingEnviroment
 You can quickly create users on this page and log in as them. It's only available in development mode.
 
 Here is [example](https://github.com/itinessity/AwesomeNetwork/tree/feature/module-part-3/AwesomeNetwork) provided by Skillfactory, to compare.
-Maybe its bad on purpose, I had to change a lot.
+Maybe its bad on purpose, I had to do a lot of things differently.
