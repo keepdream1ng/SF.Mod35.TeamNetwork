@@ -1,5 +1,5 @@
 I called this project a TeamNetwork, because it was supposed to be Skillfactory project
-for a team, but maybe I'm the only one who went so far out of 15 people in class)
+for a team, but maybe I'm the only one who went so far out of 15 people in class because there was no teammate to find.
 
 During development, i made an effort to figure out Bootstrap 5 to have options for fast prototyping.
 Also, I made this route for website: /TestingEnviroment
